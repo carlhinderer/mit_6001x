@@ -1,0 +1,17 @@
+-------------------------------------------------
+CHAPTER 1 - GETTING STARTED
+-------------------------------------------------
+
+- Turing Completeness
+
+    - Alan Turing described a hypothetical machine called the 'Universal Turing Machine' in 1936
+
+    - Church-Turing Theorem: 
+        'If a function is computable, any Turing machine can be programmed to compute it.'
+
+    - Not all problems have computational solutions.  For instance, Turing showed that it is 
+        impossible to write a program P that will print 'true' if and only if P will run
+        forever.  This is known as the 'halting problem'.
+
+    - All modern languages are Turing-complete, so anything that can be written in one language
+        can be written in any other language.
