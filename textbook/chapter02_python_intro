@@ -1,0 +1,30 @@
+-------------------------------------------------
+CHAPTER 2 - PYTHON INTRO
+-------------------------------------------------
+
+- 4 Python Scalar Objects
+
+    1. int
+    2. float
+    3. bool
+    4. None
+
+
+
+- Python 3.X input()
+
+    # Get string input
+    name = input('Enter your name: ')
+
+    # Get int input
+    n = input('Enter your age: ')
+    n = int(n)
+
+
+
+- Setting Character Encoding
+
+    The character encoding can be set at the file level by putting the 'coding' comment in the first
+      line of the file.
+
+      # -*- coding: utf-8 -*-
