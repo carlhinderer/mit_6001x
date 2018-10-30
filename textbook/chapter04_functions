@@ -1,0 +1,52 @@
+-------------------------------------------------
+CHAPTER 4 - FUNCTIONS
+-------------------------------------------------
+
+- Decomposition and Abstraction
+
+    Decomposition creates structure.
+    Abstraction hides detail.
+
+
+
+- Recursion
+
+    Need 2 cases:
+      1. Base Case
+      2. Inductive Case
+
+
+    def fibonacci(n):
+        if n == 0 or n == 1:
+            return 1
+        else:
+            return fibonacci(n-1) + fibonacci(n-2)
+
+
+
+- Divide and Conquer Algorithms
+
+    Divide and Conquer algroithms solve hard problems by breaking it up into a set of subproblems
+      with the properties that:
+
+        1. The subproblems are easier to solve than the original problem
+        2. Solutions of the subproblems can be combined to solve the original problem
+
+
+    def is_palindrome(s):
+
+        def to_chars(s):
+            s = s.lower()
+            letters = ''
+            for c in s:
+                if c in 'abcdefghijklmnopqrstuvwxyz': 
+                    letters = letters + c
+            return letters
+
+        def is_pal(s):
+            if len(s) <= 1:
+                return True
+            else:
+                return s[0] == s[-1] and ispal(s[1:-1])
+
+        return is_pal(to_chars(s))
