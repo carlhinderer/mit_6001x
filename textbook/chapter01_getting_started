@@ -2,9 +2,33 @@
 CHAPTER 1 - GETTING STARTED
 -------------------------------------------------
 
+- Heron of Alexandria's Algorithm for Finding Square Roots
+
+    # Find the square root of a number x
+    1. Start with a guess, g
+    2. If g*g is close enough to x, stop and say g is the answer
+    3. Otherwise, create a new guess by averaging g and x/g
+         g = (g + x/g) / 2
+    4. Go back to step 1.
+
+
+    # Example - Square Root of 25
+    1. Guess g=3
+    2. 3*3=9 is not close enough to 25
+    3. g = (3 + 25/3) / 2
+         = 5.67
+    4. 5.67*5.67=32.15 is still not close enough to 25
+    5. g = (5.67 + 25/5.67) / 2
+         = 5.04
+    6. 5.04*5.04=25.4 is close enough to 25, so we stop
+
+
+
 - Turing Completeness
 
-    - Alan Turing described a hypothetical machine called the 'Universal Turing Machine' in 1936
+    - Alan Turing described a hypothetical machine called the 'Universal Turing Machine' in 1936.
+        A programming language is Turing complete if it can be used to simulate a Universal
+        Turing Machine.
 
     - Church-Turing Theorem: 
         'If a function is computable, any Turing machine can be programmed to compute it.'
