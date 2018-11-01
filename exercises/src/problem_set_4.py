@@ -445,347 +445,357 @@
 
 
 
-Problem 6 - Playing a Game
+# Problem 6 - Playing a Game
 
-A game consists of playing multiple hands. We need to implement one final function to complete our word-game program. 
-  Write the code that implements the playGame function. You should remove the code that is currently uncommented in the 
-  playGame body. Read through the specification and make sure you understand what this function accomplishes. For the game, 
-  you should use the HAND_SIZE constant to determine the number of cards in a hand.
+# A game consists of playing multiple hands. We need to implement one final function to complete our word-game program. 
+#   Write the code that implements the playGame function. You should remove the code that is currently uncommented in the 
+#   playGame body. Read through the specification and make sure you understand what this function accomplishes. For the game, 
+#   you should use the HAND_SIZE constant to determine the number of cards in a hand.
 
-Testing: Try out this implementation as if you were playing the game. Try out different values for HAND_SIZE with your 
-  program, and be sure that you can play the wordgame with different hand sizes by modifying only the variable HAND_SIZE.
-
-
-How The Game Output Should Look
-
-How Loading word list from file...
-   83667 words loaded.
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
-You have not played a hand yet. Please play a new hand first!
-
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-Current Hand: p z u t t t o
-Enter word, or a "." to indicate that you are finished: tot
-"tot" earned 9 points. Total: 9 points
-
-Current Hand: p z u t
-Enter word, or a "." to indicate that you are finished: .
-Goodbye! Total score: 9 points.
-
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
-Current Hand: p z u t t t o
-Enter word, or a "." to indicate that you are finished: top
-"top" earned 15 points. Total: 15 points
-
-Current Hand: z u t t
-Enter word, or a "." to indicate that you are finished: tu
-Invalid word, please try again.
-
-Current Hand: z u t t
-Enter word, or a "." to indicate that you are finished: .
-Goodbye! Total score: 15 points.
-
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-Current Hand: a q w f f i p
-Enter word, or a "." to indicate that you are finished: paw
-"paw" earned 24 points. Total: 24 points
-
-Current Hand: q f f i
-Enter word, or a "." to indicate that you are finished: qi
-"qi" earned 22 points. Total: 46 points
-
-Current Hand: f f
-Enter word, or a "." to indicate that you are finished: .
-Goodbye! Total score: 46 points.
-
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-Current Hand: a r e t i i n
-Enter word, or a "." to indicate that you are finished: inertia
-"inertia" earned 99 points. Total: 99 points.
-
-Run out of letters. Total score: 99 points.
-
-Enter n to deal a new hand, r to replay the last hand, or e to end game: x
-Invalid command.
-Enter n to deal a new hand, r to replay the last hand, or e to end game: ehe Game Output Would Look
+# Testing: Try out this implementation as if you were playing the game. Try out different values for HAND_SIZE with your 
+#   program, and be sure that you can play the wordgame with different hand sizes by modifying only the variable HAND_SIZE.
 
 
-Hints About The Output
+# How The Game Output Should Look
 
-Be sure to inspect the above sample output carefully - very little is actually printed out in this function 
-  specifically. Most of the printed output actually comes from the code you wrote in playHand - be sure that your 
-  code is modular and uses function calls to the playHand helper function!
+# How Loading word list from file...
+#    83667 words loaded.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# You have not played a hand yet. Please play a new hand first!
 
-You should also make calls to the dealHand helper function. You shouldn't make calls to any other helper function 
-  that we've written so far - in fact, this function can be written in about 15-20 lines of code.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Current Hand: p z u t t t o
+# Enter word, or a "." to indicate that you are finished: tot
+# "tot" earned 9 points. Total: 9 points
 
-Here is the above output, with the output from playHand obscured:
+# Current Hand: p z u t
+# Enter word, or a "." to indicate that you are finished: .
+# Goodbye! Total score: 9 points.
+
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# Current Hand: p z u t t t o
+# Enter word, or a "." to indicate that you are finished: top
+# "top" earned 15 points. Total: 15 points
+
+# Current Hand: z u t t
+# Enter word, or a "." to indicate that you are finished: tu
+# Invalid word, please try again.
+
+# Current Hand: z u t t
+# Enter word, or a "." to indicate that you are finished: .
+# Goodbye! Total score: 15 points.
+
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Current Hand: a q w f f i p
+# Enter word, or a "." to indicate that you are finished: paw
+# "paw" earned 24 points. Total: 24 points
+
+# Current Hand: q f f i
+# Enter word, or a "." to indicate that you are finished: qi
+# "qi" earned 22 points. Total: 46 points
+
+# Current Hand: f f
+# Enter word, or a "." to indicate that you are finished: .
+# Goodbye! Total score: 46 points.
+
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Current Hand: a r e t i i n
+# Enter word, or a "." to indicate that you are finished: inertia
+# "inertia" earned 99 points. Total: 99 points.
+
+# Run out of letters. Total score: 99 points.
+
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: x
+# Invalid command.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: ehe Game Output Would Look
+
+
+# Hints About The Output
+
+# Be sure to inspect the above sample output carefully - very little is actually printed out in this function 
+#   specifically. Most of the printed output actually comes from the code you wrote in playHand - be sure that your 
+#   code is modular and uses function calls to the playHand helper function!
+
+# You should also make calls to the dealHand helper function. You shouldn't make calls to any other helper function 
+#   that we've written so far - in fact, this function can be written in about 15-20 lines of code.
+
+# Here is the above output, with the output from playHand obscured:
           
-Loading word list from file...
-   83667 words loaded.
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
-You have not played a hand yet. Please play a new hand first!
+# Loading word list from file...
+#    83667 words loaded.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# You have not played a hand yet. Please play a new hand first!
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-<call to playHand> 
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# <call to playHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-<call to playHand> 
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# <call to playHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
-<call to playHand> 
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# <call to playHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: x
-Invalid command.
-Enter n to deal a new hand, r to replay the last hand, or e to end game: e
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: x
+# Invalid command.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: e
 
           
-Be sure to only paste your definition for playGame in the following box. Do not include any other function definitions.
+# Be sure to only paste your definition for playGame in the following box. Do not include any other function definitions.
 
 
-def playGame(wordList):
-    """
-    Allow the user to play an arbitrary number of hands.
+# def playGame(wordList):
+#     """
+#     Allow the user to play an arbitrary number of hands.
  
-    1) Asks the user to input 'n' or 'r' or 'e'.
-      * If the user inputs 'n', let the user play a new (random) hand.
-      * If the user inputs 'r', let the user play the last hand again.
-      * If the user inputs 'e', exit the game.
-      * If the user inputs anything else, tell them their input was invalid.
+#     1) Asks the user to input 'n' or 'r' or 'e'.
+#       * If the user inputs 'n', let the user play a new (random) hand.
+#       * If the user inputs 'r', let the user play the last hand again.
+#       * If the user inputs 'e', exit the game.
+#       * If the user inputs anything else, tell them their input was invalid.
  
-    2) When done playing the hand, repeat from step 1
-    """
-    # TO DO ... <-- Remove this comment when you code this function
+#     2) When done playing the hand, repeat from step 1
+#     """
+#     # TO DO ... <-- Remove this comment when you code this function
 
 
 
-Computer Choosing a Word and Playing a Hand
+# Computer Choosing a Word and Playing a Hand
 
-**Part B is dependent on your functions from ps4a.py, so be sure to complete ps4a.py before working on ps4b.py**
+# **Part B is dependent on your functions from ps4a.py, so be sure to complete ps4a.py before working on ps4b.py**
 
-Now that you have completed your word game code, you decide that you would like to enable your computer (SkyNet) to 
-  play the game (your hidden agenda is to prove once and for all that computers are inferior to human intellect!) In 
-  this part, you will be able to compare how you as a user succeed in the game compared to the computer's performance.
+# Now that you have completed your word game code, you decide that you would like to enable your computer (SkyNet) to 
+#   play the game (your hidden agenda is to prove once and for all that computers are inferior to human intellect!) In 
+#   this part, you will be able to compare how you as a user succeed in the game compared to the computer's performance.
 
-You should look at the following two functions: compChooseWord and compPlayHand, before moving on to Problem 7 on the next page.
+# You should look at the following two functions: compChooseWord and compPlayHand, before moving on to Problem 7 on the next page.
 
 
-compChooseWord
+# compChooseWord
 
-If you follow the pseudocode for compChooseWord, you'll see that the code creates a computer player that is legal, but not 
-  always the best. Try to walk through and understand our implementation.
+# If you follow the pseudocode for compChooseWord, you'll see that the code creates a computer player that is legal, but not 
+#   always the best. Try to walk through and understand our implementation.
 
-A Note On Runtime: You may notice that things run a bit slowly when the computer plays. This is to be expected - the wordList 
-  has 83667 words, after all! 
+# A Note On Runtime: You may notice that things run a bit slowly when the computer plays. This is to be expected - the wordList 
+#   has 83667 words, after all! 
 
 
-Test Cases to Understand the Code: 
+# Test Cases to Understand the Code: 
 
->>> compChooseWord({'a': 1, 'p': 2, 's': 1, 'e': 1, 'l': 1}, wordList, 6) 
-appels 
->>> compChooseWord({'a': 2, 'c': 1, 'b': 1, 't': 1}, wordList, 5) 
-acta 
->>> compChooseWord({'a': 2, 'e': 2, 'i': 2, 'm': 2, 'n': 2, 't': 2}, wordList, 12) 
-immanent 
->>> compChooseWord({'x': 2, 'z': 2, 'q': 2, 'n': 2, 't': 2}, wordList, 12) 
-None
+# >>> compChooseWord({'a': 1, 'p': 2, 's': 1, 'e': 1, 'l': 1}, wordList, 6) 
+# appels 
+# >>> compChooseWord({'a': 2, 'c': 1, 'b': 1, 't': 1}, wordList, 5) 
+# acta 
+# >>> compChooseWord({'a': 2, 'e': 2, 'i': 2, 'm': 2, 'n': 2, 't': 2}, wordList, 12) 
+# immanent 
+# >>> compChooseWord({'x': 2, 'z': 2, 'q': 2, 'n': 2, 't': 2}, wordList, 12) 
+# None
 
 
-compPlayHand
-Now that we have the ability to let the computer choose a word, we need to set up a function to allow the computer to play a hand
-   - in a manner very similar to Part A's playHand function. This function allows the computer to play a given hand and is very 
-   similar to the earlier version in which a user selected the word, although deciding when it is done playing a particular hand 
-   is different.
+# compPlayHand
+# Now that we have the ability to let the computer choose a word, we need to set up a function to allow the computer to play a hand
+#    - in a manner very similar to Part A's playHand function. This function allows the computer to play a given hand and is very 
+#    similar to the earlier version in which a user selected the word, although deciding when it is done playing a particular hand 
+#    is different.
 
-Test Cases to Understand the Code: 
+# Test Cases to Understand the Code: 
 
-compPlayHand({'a': 1, 'p': 2, 's': 1, 'e': 1, 'l': 1}, wordList, 6)
+# compPlayHand({'a': 1, 'p': 2, 's': 1, 'e': 1, 'l': 1}, wordList, 6)
 
-Current Hand: a p p s e l
+# Current Hand: a p p s e l
 
-"appels" earned 110 points. Total: 110 points
+# "appels" earned 110 points. Total: 110 points
 
-Total score: 110 points.
+# Total score: 110 points.
 
-compPlayHand({'a': 2, 'c': 1, 'b': 1, 't': 1}, wordList, 5)
+# compPlayHand({'a': 2, 'c': 1, 'b': 1, 't': 1}, wordList, 5)
 
-Current Hand: a a c b t "acta" 
+# Current Hand: a a c b t "acta" 
 
-earned 24 points. Total: 24 points 
+# earned 24 points. Total: 24 points 
 
-Current Hand: b Total score: 24 points. 
+# Current Hand: b Total score: 24 points. 
 
-compPlayHand({'a': 2, 'e': 2, 'i': 2, 'm': 2, 'n': 2, 't': 2}, wordList, 12)
+# compPlayHand({'a': 2, 'e': 2, 'i': 2, 'm': 2, 'n': 2, 't': 2}, wordList, 12)
 
-Current Hand: a a e e i i m m n n t t
+# Current Hand: a a e e i i m m n n t t
 
-"immanent" earned 96 points. Total: 96 points
+# "immanent" earned 96 points. Total: 96 points
 
-Current Hand: a e t i
+# Current Hand: a e t i
 
-"ait" earned 9 points. Total: 105 points
+# "ait" earned 9 points. Total: 105 points
 
-Current Hand: e
+# Current Hand: e
 
-Total score: 105 points.
+# Total score: 105 points.
 
 
 
-Problem 7 - You and your Computer
+# Problem 7 - You and your Computer
 
-Now that your computer can choose a word, you need to give the computer the option to play. Write the code that 
-  re-implements the playGame function. You will modify the function to behave as described below in the function's comments. 
-  As before, you should use the HAND_SIZE constant to determine the number of cards in a hand. Be sure to try out different 
-  values for HAND_SIZE with your program.
+# Now that your computer can choose a word, you need to give the computer the option to play. Write the code that 
+#   re-implements the playGame function. You will modify the function to behave as described below in the function's comments. 
+#   As before, you should use the HAND_SIZE constant to determine the number of cards in a hand. Be sure to try out different 
+#   values for HAND_SIZE with your program.
 
 
-Sample Output and Hints
-Here is how the game output should look...
+# Sample Output and Hints
+# Here is how the game output should look...
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: u
+# Enter u to have yourself play, c to have the computer play: u
 
-Current Hand: a s r e t t t
-Enter word, or a "." to indicate that you are finished: tatters
-"tatters" earned 99 points. Total: 99 points
+# Current Hand: a s r e t t t
+# Enter word, or a "." to indicate that you are finished: tatters
+# "tatters" earned 99 points. Total: 99 points
 
-Run out of letters. Total score: 99 points.
+# Run out of letters. Total score: 99 points.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-Current Hand:  a s r e t t t
-"stretta" earned 99 points. Total: 99 points
+# Current Hand:  a s r e t t t
+# "stretta" earned 99 points. Total: 99 points
 
-Total score: 99 points.
+# Total score: 99 points.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: x
-Invalid command.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: x
+# Invalid command.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: me
-Invalid command.
+# Enter u to have yourself play, c to have the computer play: me
+# Invalid command.
 
-Enter u to have yourself play, c to have the computer play: you
-Invalid command.
+# Enter u to have yourself play, c to have the computer play: you
+# Invalid command.
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-Current Hand:  a c e d x l n
-"axled" earned 65 points. Total: 65 points
+# Current Hand:  a c e d x l n
+# "axled" earned 65 points. Total: 65 points
 
-Current Hand:  c n
-Total score: 65 points.
+# Current Hand:  c n
+# Total score: 65 points.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: u
+# Enter u to have yourself play, c to have the computer play: u
 
-Current Hand: a p y h h z o
-Enter word, or a "." to indicate that you are finished: zap 
-"zap" earned 42 points. Total: 42 points
+# Current Hand: a p y h h z o
+# Enter word, or a "." to indicate that you are finished: zap 
+# "zap" earned 42 points. Total: 42 points
 
-Current Hand: y h h o
-Enter word, or a "." to indicate that you are finished: oy
-"oy" earned 10 points. Total: 52 points
+# Current Hand: y h h o
+# Enter word, or a "." to indicate that you are finished: oy
+# "oy" earned 10 points. Total: 52 points
 
-Current Hand: h h
-Enter word, or a "." to indicate that you are finished: .
-Goodbye! Total score: 52 points.
+# Current Hand: h h
+# Enter word, or a "." to indicate that you are finished: .
+# Goodbye! Total score: 52 points.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-Current Hand:  a p y h h z o
-"hypha" earned 80 points. Total: 80 points
+# Current Hand:  a p y h h z o
+# "hypha" earned 80 points. Total: 80 points
 
-Current Hand:  z o
-Total score: 80 points.
+# Current Hand:  z o
+# Total score: 80 points.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: e
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: e
 
 
-Hints about the output
+# Hints about the output
 
-Be sure to inspect the above sample output carefully - very little is actually printed out in this function specifically. Most of the printed output actually comes from the code you wrote in playHand and compPlayHand - be sure that your code is modular and uses function calls to these helper functions!
+# Be sure to inspect the above sample output carefully - very little is actually printed out in this function specifically. 
+#   Most of the printed output actually comes from the code you wrote in playHand and compPlayHand - be sure that your code 
+#   is modular and uses function calls to these helper functions!
 
-You should also make calls to the dealHand helper function. You shouldn't make calls to any other helper function that we've written so far - in fact, this function can be written in about 15-20 lines of code.
+# You should also make calls to the dealHand helper function. You shouldn't make calls to any other helper function that we've 
+#   written so far - in fact, this function can be written in about 15-20 lines of code.
 
-Here is the above output, with the output from playHand and compPlayHand obscured:
+# Here is the above output, with the output from playHand and compPlayHand obscured:
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
-You have not played a hand yet. Please play a new hand first!
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# You have not played a hand yet. Please play a new hand first!
             
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: u
+# Enter u to have yourself play, c to have the computer play: u
 
-<call to playHand> 
+# <call to playHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-<call to compPlayHand> 
+# <call to compPlayHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: x
-Invalid command.
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: x
+# Invalid command.
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: me
-Invalid command.
+# Enter u to have yourself play, c to have the computer play: me
+# Invalid command.
 
-Enter u to have yourself play, c to have the computer play: you
-Invalid command.
+# Enter u to have yourself play, c to have the computer play: you
+# Invalid command.
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-<call to compPlayHand> 
+# <call to compPlayHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: n
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: n
 
-Enter u to have yourself play, c to have the computer play: u
+# Enter u to have yourself play, c to have the computer play: u
 
-<call to playHand> 
+# <call to playHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: r
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: r
 
-Enter u to have yourself play, c to have the computer play: c
+# Enter u to have yourself play, c to have the computer play: c
 
-<call to compPlayHand> 
+# <call to compPlayHand> 
 
-Enter n to deal a new hand, r to replay the last hand, or e to end game: e
+# Enter n to deal a new hand, r to replay the last hand, or e to end game: e
 
-Hopefully this hint makes the problem seem a bit more approachable.
-A Note On Runtime
+# Hopefully this hint makes the problem seem a bit more approachable.
+# A Note On Runtime
 
-You may notice that things run slowly when the computer plays. This is to be expected. If you want (totally optional!), feel free to investigate ways of making the computer's turn go faster - one way is to preprocess the word list into a dictionary (string -> int) so looking up the score of a word becomes much faster in the compChooseWord function.
+# You may notice that things run slowly when the computer plays. This is to be expected. If you want (totally optional!), feel 
+#   free to investigate ways of making the computer's turn go faster - one way is to preprocess the word list into a dictionary 
+#   (string -> int) so looking up the score of a word becomes much faster in the compChooseWord function.
 
-Be careful though - you only want to do this preprocessing one time - probably right after we generate the wordList for you (at the bottom of the file). If you choose to do this, you'll have to modify what inputs your functions take (they'll probably take a word dictionary instead of a word list, for example).
+# Be careful though - you only want to do this preprocessing one time - probably right after we generate the wordList for you 
+#   (at the bottom of the file). If you choose to do this, you'll have to modify what inputs your functions take (they'll probably 
+#   take a word dictionary instead of a word list, for example).
 
-IMPORTANT:Don't worry about this issue when running your code in the checker below! We load a very small sample wordList (much smaller than 83667 words!) to avoid having your code time out. Your code will work even if you don't implement a form of pre-processing as described.
-Entering Your Code
-
-Be sure to only paste your definition for playGame from ps4b.py in the following box. Do not include any other function definitions.
+# IMPORTANT:Don't worry about this issue when running your code in the checker below! We load a very small sample wordList (much 
+#   smaller than 83667 words!) to avoid having your code time out. Your code will work even if you don't implement a form of pre-processing as described.
 
 
-def playGame(wordList):
-    """
-    Allow the user to play an arbitrary number of hands.
+# Entering Your Code
+
+# Be sure to only paste your definition for playGame from ps4b.py in the following box. Do not include any other function definitions.
+
+
+# def playGame(wordList):
+#     """
+#     Allow the user to play an arbitrary number of hands.
  
-    1) Asks the user to input 'n' or 'r' or 'e'.
-        * If the user inputs 'e', immediately exit the game.
-        * If the user inputs anything that's not 'n', 'r', or 'e', keep asking them again.
+#     1) Asks the user to input 'n' or 'r' or 'e'.
+#         * If the user inputs 'e', immediately exit the game.
+#         * If the user inputs anything that's not 'n', 'r', or 'e', keep asking them again.
 
-    2) Asks the user to input a 'u' or a 'c'.
-        * If the user inputs anything that's not 'c' or 'u', keep asking them again.
+#     2) Asks the user to input a 'u' or a 'c'.
+#         * If the user inputs anything that's not 'c' or 'u', keep asking them again.
  
-    3) Switch functionality based on the above choices:
-        * If the user inputted 'n', play a new (random) hand.
-        * Else, if the user inputted 'r', play the last hand again.
-          But if no hand was played, output "You have not played a hand yet. 
+#     3) Switch functionality based on the above choices:
+#         * If the user inputted 'n', play a new (random) hand.
+#         * Else, if the user inputted 'r', play the last hand again.
+#           But if no hand was played, output "You have not played a hand yet. 
