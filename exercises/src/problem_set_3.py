@@ -1,3 +1,5 @@
+# Problem Set 3
+# Prereqs: Tuples and Lists, Dictionaries
 # Introduction
 
 # Note: Do not be intimidated by this problem! It's actually easier than it looks. We will
@@ -137,7 +139,7 @@
 
 # When inserting underscores into your string, it's a good idea to add at least a space after each
 #     one, so it's clear to the user how many unguessed letters are left in the string(compare the
-#                                                                                      readability of ____ with _ _ _ _). This is called usability - it's very important, when
+#     readability of ____ with _ _ _ _). This is called usability - it's very important, when
 #     programming, to consider the usability of your program. If users find your program difficult to
 #     understand or operate, they won't use it!
 

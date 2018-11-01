@@ -1,5 +1,5 @@
-# Prereqs: Computational Complexity, Searching and Sorting
 # Problem Set 6
+# Prereqs: Computational Complexity, Searching and Sorting
 
 # Problem 1 - 1
 # The ONLY thing we are interested in when designing programs is that it returns the correct answer.
