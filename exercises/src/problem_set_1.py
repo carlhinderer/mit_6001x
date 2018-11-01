@@ -49,5 +49,24 @@ def test_count_bobs_interactively():
 # For example, if s = 'azcbobobegghakl', then your program should print:
 # Longest substring in alphabetical order is: beggh
 #
-# In the case of ties, print the first substring. For example, if s = 'abcbcd', then your program should print:
+# In the case of ties, print the first substring. For example, if s = 'abcbcd', then your program should
+#   print:
 # Longest substring in alphabetical order is: abc
+
+
+def longest_alphabetic_substr(s):
+    longest, current = '', ''
+    for c in s:
+        if current == '' or c >= current[-1]:
+            current += c
+        else:
+            if len(current) > len(longest):
+                longest = current
+            current = ''
+    if len(current) > len(longest):
+        longest = current
+    return longest
+
+
+def test_longest_alphabetic_interactively():
+    print('not implemented')
