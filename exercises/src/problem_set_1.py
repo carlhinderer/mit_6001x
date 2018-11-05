@@ -69,4 +69,5 @@ def longest_alphabetic_substr(s):
 
 
 def test_longest_alphabetic_interactively():
-    print('not implemented')
+    s = input('Enter a string: ')
+    print('Longest alphabetic substring is', longest_alphabetic_substr(s))
