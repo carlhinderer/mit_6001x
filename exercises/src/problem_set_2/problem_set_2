@@ -17,7 +17,7 @@
 #     month 0).
 #
 # Any payment you make during that month is deducted from the balance. Let's call the payment you
-#     make in month - 0 p0.  Thus, your unpaid balance for month 0, ub0, is equal to(b0 - p0).
+#     make in month - 0 p0.  Thus, your unpaid balance for month 0, ub0, is equal to (b0 - p0).
 #
 #         ub0 = b0 - p0
 #
