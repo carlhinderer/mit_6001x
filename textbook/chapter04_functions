@@ -50,3 +50,28 @@ CHAPTER 4 - FUNCTIONS
                 return s[0] == s[-1] and ispal(s[1:-1])
 
         return is_pal(to_chars(s))
+
+
+
+- Euclidean Algorithm for Finding GCF
+
+    def euclid_gcf(a, b):
+        if b == 0:
+            return a
+        else:
+            return euclid_gcf(b, a % b)
+
+
+
+- Example - Finding a character in a sorted string using bisection search
+
+    def isIn(char, aStr):
+        pos = len(aStr) // 2
+        if len(aStr) == 0:
+            return False
+        elif aStr[pos] == char:
+            return True
+        elif aStr[pos] < char:
+            return isIn(char, aStr[pos+1:])
+        else
+            return isIn(char, aStr[:pos])
