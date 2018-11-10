@@ -26,3 +26,13 @@ def test_pmt_to_pay_bal_in_year():
     balance = 3926
     interest_rate = 0.2
     assert credit_card.pmt_to_pay_bal_in_year(balance, interest_rate) == 360
+
+
+def test_fast_pmt_to_pay_bal_in_year():
+    balance = 320000
+    interest_rate = 0.2
+    assert credit_card.fast_pmt_to_pay_bal_in_year(balance, interest_rate) == 29157.09
+
+    balance = 999999
+    interest_rate = 0.18
+    assert credit_card.fast_pmt_to_pay_bal_in_year(balance, interest_rate) == 90325.03
