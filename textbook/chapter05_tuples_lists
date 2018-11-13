@@ -1,0 +1,27 @@
+-------------------------------------------------
+CHAPTER 5 - TUPLES AND LISTS
+-------------------------------------------------
+
+- Cloning Lists
+
+    Remember that lists are mutable when you're using them as function arguments.
+
+    def process_list(L1, L2):
+        L1_copy = L1[:]
+        L2_copy = L2[:]
+        ...
+
+
+
+- Hashable Types
+
+    Keys in dictionaries must be hashable types.  A type is hashable if it has:
+
+      1. A __hash__ method that maps an object of the type to an int.  For every object, 
+           the value returned by __hash__ does not change for the life of the object.
+
+      2. An __eq__ method that is used to compare objects for equality.
+
+
+    All of Python's built-in immutable types are hashable.  None of Python's built-in mutable types
+      are hashable.  For instance, tuples can be used as hash keys.
