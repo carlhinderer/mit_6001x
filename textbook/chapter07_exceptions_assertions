@@ -2,3 +2,23 @@
 CHAPTER 7 - EXCEPTIONS & ASSERTIONS
 -------------------------------------------------
 
+- Example - Checking Input Type
+
+    # Read an integer input
+    def readInt():
+        while True:
+            val = input('Enter an integer: ')
+            try:
+                return int(val)
+            except ValueError:
+                print(val, 'is not an integer.')
+
+
+    # Polymorphic version to check any type
+    def readVal(valType, requestMsg, errorMsg):
+        while True:
+            val = input(requestMsg + ' ')
+            try:
+                return valType(val)
+            except ValueError:
+                print(val, errorMsg)
