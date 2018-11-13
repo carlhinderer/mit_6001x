@@ -67,7 +67,6 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
     word = ''
     for char in secretWord:
         if char in lettersGuessed:
@@ -84,6 +83,13 @@ def getAvailableLetters(lettersGuessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE...
+    import string
+    alphabet = string.ascii_lowercase
+    unused_letters = ''
+    for letter in alphabet:
+        if letter not in lettersGuessed:
+            unused_letters += letter
+    return unused_letters
 
 
 def hangman(secretWord):

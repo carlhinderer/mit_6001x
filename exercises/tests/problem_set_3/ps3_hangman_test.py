@@ -24,3 +24,11 @@ def test_getGuessedWord():
 
     letters_guessed = []
     assert ps3_hangman.getGuessedWord(word, letters_guessed) == ' _  _  _  _  _  _  _  _ '
+
+
+def test_getAvailableLetters():
+    letters_guessed = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+    assert ps3_hangman.getAvailableLetters(letters_guessed) == 'lmnopqrstuvwxyz'
+
+    letters_guessed = []
+    assert ps3_hangman.getAvailableLetters(letters_guessed) == 'abcdefghijklmnopqrstuvwxyz'
