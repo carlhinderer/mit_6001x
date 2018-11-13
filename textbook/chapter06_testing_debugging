@@ -1,0 +1,27 @@
+-------------------------------------------------
+CHAPTER 6 - TESTING AND DEBUGGING
+-------------------------------------------------
+
+- Bugs can be
+    - Overt vs Covert
+    - Persistent vs Intermittent
+
+  Defensive Programming = try to write code in a way that makes bugs overt and persistent
+
+
+
+- Glass-Box Testing Rules
+
+    1. Exercise both branches of all 'if' statements
+
+    2. Make sure that each 'except' clause is executed
+
+    3. For each 'while' and 'for' loop, have test cases in which 
+         - the body of the loop is not entered
+         - the body is executed once
+         - the body is executed more than once
+
+    4. For recursive functions, have test cases which
+         - make 0 recursive calls
+         - make 1 recursive call
+         - make more than 1 recursive calls
