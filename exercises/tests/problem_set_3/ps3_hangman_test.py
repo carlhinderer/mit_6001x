@@ -12,3 +12,15 @@ def test_isWordGuessed():
 
     letters_guessed = []
     assert ps3_hangman.isWordGuessed(word, letters_guessed) == False
+
+
+def test_getGuessedWord():
+    word = 'testword'
+    letters_guessed = ['t', 'e', 's', 'w', 'o', 'r', 'd']
+    assert ps3_hangman.getGuessedWord(word, letters_guessed) == 'testword'
+
+    letters_guessed = ['t', 's', 'w']
+    assert ps3_hangman.getGuessedWord(word, letters_guessed) == 't _ stw _  _  _ '
+
+    letters_guessed = []
+    assert ps3_hangman.getGuessedWord(word, letters_guessed) == ' _  _  _  _  _  _  _  _ '
