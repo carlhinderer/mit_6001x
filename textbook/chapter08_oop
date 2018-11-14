@@ -1,0 +1,93 @@
+-------------------------------------------------
+CHAPTER 8 - OOP
+-------------------------------------------------
+
+- Programming is about managing complexity in a way that facilitates change.  The 2 ways to do this are:
+    1. Decomposition = create structure
+    2. Abstraction = suppress details
+
+
+
+- All instances of user-defined classes are hashable, so they can be used as dictionary keys.
+
+
+
+- Example - Person class
+
+    class Person(object):
+        def __init__(self, name):
+            self.name = name
+            try:
+                lastBlank = name.rindex('')
+                self.lastName = name[lastBlank+1:]
+            except:
+                self.lastName = name
+            self.birthday = None
+
+        def getName(self):
+            return self.name
+
+        def getLastName(self):
+            return self.lastName
+
+        def setBirthday(self, birthdate):
+            self.birthday = birthdate
+
+        def getAge(self):
+            if self.birthday == None:
+                raise ValueError
+
+        def __lt__(self, other):
+            if self.lastName == other.lastName:
+                return self.name < other.name
+            return self.lastName < other.lastName
+
+        def __str__(self):
+            return self.name
+
+
+
+- Example - Person subclasses
+
+    class MITPerson(Person):
+        # Class variable
+        nextIdNum = 0
+
+        def __init__(self, name):
+            Person.__init__(self, name)
+            self.idNum = MITPerson.nextIdNum
+            MITPerson.nextIdNum += 1
+
+        def getIdNum(self):
+            return self.idNum
+
+        def __lt__(self, other):
+            return self.idNum < other.idNum
+
+        def isStudent(self):
+            return isInstance(self, Student)
+
+
+    class Student(MITPerson):
+        pass
+
+
+    class UG(Student):
+        def __init__(self, name, classYear):
+            MITPerson.__init__(self, name)
+            self.year = classYear
+
+        def getClass(self):
+            return self.classYear
+
+
+    class Grad(Student):
+        pass
+
+
+
+- The Substitution Principle (Liskov and Wing, 1994)
+
+    We should think of subclasses as extending the behavior of their superclasses.  The subclass may
+      override methods from the superclass, but this must be done with care.  Important behaviors of
+      the superclass must be supported in each of the subclasses.
