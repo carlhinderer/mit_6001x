@@ -138,7 +138,10 @@ class Message(object):
         shift_dict = self.build_shift_dict(shift)
         shifted = ''
         for letter in self.message_text:
-            shifted += shift_dict[letter]
+            if letter.isalpha():
+                shifted += shift_dict[letter]
+            else:
+                shifted += letter
         return shifted
 
 
@@ -214,7 +217,7 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass  # delete this line and replace with your code here
+        Message.__init__(self, text)
 
     def decrypt_message(self):
         '''
@@ -232,7 +235,23 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass  # delete this line and replace with your code here
+        best_shift = 0
+        best_word_count = 0
+        best_message = ''
+
+        for i in range(26):
+            word_count = 0
+            decrypt_attempt = self.apply_shift(i)
+            for word in decrypt_attempt.split():
+                if is_word(self.valid_words, word):
+                    word_count += 1
+            if word_count > best_word_count:
+                best_shift = i
+                best_word_count = word_count
+                best_message = decrypt_attempt
+
+        return best_shift, best_message
+
 
 
 # Example test case (PlaintextMessage)
