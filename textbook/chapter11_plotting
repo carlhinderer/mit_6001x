@@ -65,7 +65,3 @@ CHAPTER 11 - PLOTTING
 
       pyplot.rcParams['lines.markersize'] = 10
       pyplot.rcParams['legend.numpoints'] = 1
-
-
-
-- 
