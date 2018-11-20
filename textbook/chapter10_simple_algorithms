@@ -61,3 +61,160 @@ CHAPTER 10 - SIMPLE ALGORITHMS
             return False
         else:
             return bsearch(L, e, 0, len(L)-1)
+
+
+
+- Python Sorting
+
+    # Sorts a list
+    L.sort()
+
+    # Returns a list with the same elements as L, but does not mutate L
+    sorted(L)
+
+    # Calling 'sort()' on a dictionary raises an exception
+    dict.sort()
+
+    # sorted(dict) returns a sorted list of the keys of the dictionary
+    sorted(dict)
+
+
+
+- Loop Invariants
+
+    We use induction to reason about loop invariants.  
+
+      1. Base Case
+      2. Induction Step
+      3. Termination
+
+
+
+- Selection Sort
+
+    Selection Sort works by maintaining the loop invariant that, given a partitioning of the list into
+      a prefix (L[0:i]) and suffix (L[i+1:length(L)]), the prefix is sorted, and no element in the prefix
+      is larger that the smallest element in the suffix.
+
+      1. Base Case: At the start, the prefix is empty.  So the invariant is trivially true.
+
+      2. Induction Step: At each step of the algorithm, we move the minimum element from the of the suffix
+           to the end of the prefix.  Because we know that the prefix was sorted before we moved the 
+           element, we know it will still be sorted after.  And since we removed the smallest element in 
+           the suffix, no element in the prefix is larger than the smallest element remaining in the suffix.
+
+      3. Termination: When the loop is exited, the prefix includes the entire list, and the suffix is empty.
+           Thus, the entire list is now sorted in ascending order.
+
+
+    def selection_sort(L):
+        suffix_start = 0
+        while suffix_start != len(L):
+            for i in range(suffix_start, len(L)):
+                if L[i] < L[suffix_start]:
+                    L[suffix_start], L[i] = L[i], L[suffix_start]
+            suffix_start += 1
+
+
+    Complexity: O(len(L)**2)
+
+
+
+- Divide and Conquer Algorithms
+
+    Divide-and-conquer algorithms are characterized by:
+
+      1. A threshold input size, below which problems are not subdivided (the recursive base case)
+      2. The size and number of sub-instances into which an instance is split
+      3. The algorithm used to combine sub-solutions
+
+
+
+- Merge Sort
+
+    Merge Sort is a prototypical divide-and-conquer algorithm, created in 1945 by John von Neumann, 
+      and still widely used.
+
+      1. If the list is length 0 or 1, it is already sorted
+      2. If the list has more than 1 element, split the list into 2 lists and use Merge Sort to sort 
+           each of them.
+      3. Merge the results.
+
+
+
+    Merge Example:
+
+      L1                           L2                   Result
+      -----------------------------------------------------------------------------------
+      [1, 5, 12, 18, 19, 20]       [2, 3, 4, 17]        []
+      [5, 12, 18, 19, 20]          [2, 3, 4, 17]        [1]
+      [5, 12, 18, 19, 20]          [3, 4, 17]           [1, 2]
+      [5, 12, 18, 19, 20]          [4, 17]              [1, 2, 3]
+      [5, 12, 18, 19, 20]          [17]                 [1, 2, 3, 4]
+      [12, 18, 19, 20]             [17]                 [1, 2, 3, 4, 5]
+      [18, 19, 20]                 []                   [1, 2, 3, 4, 5, 17]
+      []                           []                   [1, 2, 3, 4, 5, 17, 18, 19, 20]
+
+      The complexity of the merge operation is O(n).
+
+
+
+    def merge(left, right, compare):
+        """ left and right are sorted lists, compare defines the ordering of the elements """
+        result = []
+        i, j = 0, 0
+        while i < len(left) and j < len(right):
+            if compare(left[i], right[j]):
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+        while i < len(left):
+            result.append(left[i])
+            i += 1
+        while j < len(right):
+            result.append(right[j])
+            j += 1
+        return result
+
+
+    def merge_sort(L, compare = lambda x, y: return x < y):
+        if len(L) < 2:
+            return L[:]
+        else:
+            middle = len(L) // 2
+            left = merge_sort(L[:middle], compare)
+            right = merge_sort(L[middle:], compare)
+            return merge(left, right, compare)
+
+
+    Complexity: There are O(log(len(L))) levels of recursion.  Each level requires O(len(L)) steps, so 
+        the entire merge_sort is O(n log n).
+
+        Note, however, that the improvement in time complexity comes with a price.  Selection Sort is an 
+          in-place sorting algorithm, whereas Merge Sort requires making copies of the list.  Merge Sort's 
+          space complexity is O(len(L)).
+
+
+
+- Quick Sort
+
+    Quick Sort (developed by CAR Hoare in 1960) is conceptually similar to Merge Sort, but is much more complex.
+      Its running time depends on the way the elements in the list are to be sorted.  It's worst-case running
+      time is O(n**2), but it's expected running time is O(n log n).
+
+
+
+- Timsort
+
+    Most Python implementations today use Timsort (developed by Tim Peters in 2002 because he was unhappy with
+      Python's existing sorting algorithm).  It is designed to take advantage of the fact that many data sets
+      are already partially sorted.
+
+
+
+- Stable Sorting Algorithms
+
+    'Stable' sorting algorithms means that if two elements are equal with respect to the comparison, their 
+      relative order in the original list will be preserved in the final list.
