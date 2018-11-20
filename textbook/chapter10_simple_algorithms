@@ -120,6 +120,24 @@ CHAPTER 10 - SIMPLE ALGORITHMS
 
 
 
+- Bubble Sort
+
+    def bubble_sort(L):
+        swap = False
+        while not swap:
+            swap = True
+            for j in range(1, len(L)):
+                if L[j-1] < L[j]:
+                    swap = False
+                    temp = F[j]
+                    L[j] = L[j-1]
+                    L[j-1] = temp
+
+
+    Complexity: O(len(L)**2)
+
+
+
 - Divide and Conquer Algorithms
 
     Divide-and-conquer algorithms are characterized by:
