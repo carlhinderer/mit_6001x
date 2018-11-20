@@ -1,0 +1,71 @@
+-------------------------------------------------
+CHAPTER 11 - PLOTTING
+-------------------------------------------------
+
+- Plotting Using PyLab
+
+    PyLab is a Python standard library that provides many of the features of MATLAB.
+
+
+    To create a graph:
+
+      from matplotlib import pyplot
+
+      pyplot.figure(1)                             # Create figure 1
+      pyplot.plot([1, 2, 3, 4], [1, 7, 3, 5])      # Draw on figure 1
+      pyplot.show()                                # Show figure on screen
+
+
+
+- Saving Images to Files
+
+      pyplot.figure(1)                             # Create figure 1
+      pyplot.plot([1, 2, 3, 4], [1, 2, 3, 4])      # Draw on figure 1
+
+      pyplot.figure(2)                             # Create figure 2
+      pyplot.plot([1, 4, 2, 3], [5, 6, 7, 8])      # Draw on figure 2
+      pyplot.savefig('Figure-Addie')               # Save figure 2 in 'Figure-Addie.png'
+
+      pyplot.figure(1)                             # Switch back to figure 1
+      pyplot.plot([5, 6, 10, 3])                   # Draw on figure 1 again ([0, 1, 2, 3], [5, 6, 10, 3])
+      pyplot.savefig('Figure-Jane')                # Save figure 1 in 'Figure-Jane.png'
+
+
+
+- Example - Plotting Compound Interest
+
+      principal = 10000
+      interest_rate = 0.05
+      years = 20
+      values = []
+
+      for i in range(years + 1):
+          values.append(principal)
+          principal += principal * interest_rate
+
+      pyplot.figure(1)
+      pyplot.title('5% Growth, Compounding Annually')
+      pyplot.xlabel('Years of Compounding')
+      pyplot.ylabel('Value of Principal ($)')
+      pyplot.plot(values)
+      pyplot.show()
+
+
+
+- Changing Display Settings
+
+      pyplot.rcParams['lines.linewidth'] = 4
+      pyplot.rcParams['axes.titlesize'] = 20
+      pyplot.rcParams['axes.labelsize'] = 20
+
+      pyplot.rcParams['xtick.labelsize'] = 16
+      pyplot.rcParams['ytick.labelsize'] = 16
+      pyplot.rcParams['xtick.major.size'] = 7
+      pyplot.rcParams['ytick.major.size'] = 7
+
+      pyplot.rcParams['lines.markersize'] = 10
+      pyplot.rcParams['legend.numpoints'] = 1
+
+
+
+- 
